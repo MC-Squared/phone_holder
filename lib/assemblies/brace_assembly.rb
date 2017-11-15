@@ -9,16 +9,16 @@ class BraceAssembly < SolidRuby::Assembly
   def part(show)
     res = EdgeCup.new.show
       .translate(y: $phone_d/2.0)
-    res = ConnectorKey.new($phone_d, true)
+    res += ConnectorKey.new($phone_d, true)
       .translate(y: $phone_d/2.0)
 
-    # res += EdgeCup.new.show
-    #   .rotate(z: 90)
-    #   .translate(x: $phone_w/3.0, y: -$phone_h/3.0)
+    res += EdgeCup.new.show
+      .rotate(z: 90)
+      .translate(x: $phone_w/3.0 + $phone_d*0.2, y: -$phone_h/3.0)
 
     res += ConnectorKey.new($phone_d, true)
       .rotate(z: 90)
-      .translate(x: $phone_w/3.0, y: -$phone_h/3.0)
+      .translate(x: $phone_w/3.0 + $phone_d*0.2, y: -$phone_h/3.0)
 
     res += cube($phone_d*0.6, $phone_h/3.0, 2)
       .center_x
