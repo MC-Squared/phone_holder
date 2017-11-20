@@ -8,4 +8,8 @@ $tolerance = 0.5
 $pin_d = 5
 $pin_h = 5
 
+$vent_mount_d = 10
+$vent_mount_h = 35
+$vent_mount_pin_h = 5
+
 $thickness = 4
