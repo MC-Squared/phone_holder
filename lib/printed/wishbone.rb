@@ -28,7 +28,15 @@ class Wishbone < SolidRuby::Printed
     res += Pin.new.show
       .translate(x: t.c, z: $thickness - 0.01)
       .rotate(z: 45)
+
+    # anti-rotation pins
+    res += cylinder(d: $pin_d, h: $thickness*0.75)
+      .translate(x: t.c/1.5, z: $thickness - 0.01)
       .rotate(z: 45)
+
+    res += cylinder(d: $pin_d, h: $thickness*0.75)
+      .translate(x: -t.a/1.5, z: $thickness - 0.01)
+      .rotate(z: -45)
 
     # sides
     res += cube(x: t.a, y: $pin_d*1.0, z: $thickness)
