@@ -40,5 +40,13 @@ class BraceAssembly < SolidRuby::Assembly
       .center_xy
       .rotate(z: -45)
       .translate(x: $phone_d, y: -$phone_h/3.75)
+
+    # pin pad
+    res += cylinder(d: $pin_d*2, h: 2)
+      .translate(y: -$phone_h/6.0)
+
+    # pin hole
+    res -= cylinder(d: $pin_d + $tolerance, h: 5)
+      .translate(y: -$phone_h/6.0, z: -1)
   end
 end
