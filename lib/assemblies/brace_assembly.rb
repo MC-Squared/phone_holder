@@ -4,17 +4,19 @@ class BraceAssembly < SolidRuby::Assembly
 
   # Skip generation of the 'output' method for this assembly.
   # (will still generate 'show')
-  skip :output
 
   def part(show)
-    res = EdgeCup.new.show
-      .translate(y: $phone_d/2.0)
-    res += ConnectorKey.new($phone_d, true)
+    res = ConnectorKey.new($phone_d, true)
       .translate(y: $phone_d/2.0)
 
-    res += EdgeCup.new.show
-      .rotate(z: 90)
-      .translate(x: $phone_w/3.0 + $phone_d*0.2, y: -$phone_h/3.0)
+    if show
+      res += EdgeCup.new.show
+        .translate(y: $phone_d/2.0)
+
+      res += EdgeCup.new.show
+        .rotate(z: 90)
+        .translate(x: $phone_w/3.0 + $phone_d*0.2, y: -$phone_h/3.0)
+    end
 
     res += ConnectorKey.new($phone_d, true)
       .rotate(z: 90)
@@ -33,8 +35,6 @@ class BraceAssembly < SolidRuby::Assembly
 
     res -= cylinder(d: $pin_size + $tolerance, h: 2.5)
       .translate(y: -$phone_h/6.0, z: -0.25)
-      #.center_y
-      #.translate(x: -($phone_d*0.6)/2.0, y: -$phone_h/3.0)
 
     res += cube($phone_w/3.0, $phone_d*0.6, 2)
       .center_xy
@@ -48,5 +48,11 @@ class BraceAssembly < SolidRuby::Assembly
     # pin hole
     res -= cylinder(d: $pin_d + $tolerance, h: 5)
       .translate(y: -$phone_h/6.0, z: -1)
+
+    if !show
+      res.rotate(x: 180)
+    else
+      res
+    end
   end
 end

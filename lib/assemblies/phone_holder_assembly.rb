@@ -11,11 +11,11 @@ class PhoneHolderAssembly < SolidRuby::Assembly
       .rotate(x: 90)
       .translate(z: 5)
 
-    res += BraceAssembly.new
+    res += BraceAssembly.new.show
       .rotate(x: 90)
       .translate(x: -5, y: 3, z: $phone_h/3.0)
 
-    res += BraceAssembly.new
+    res += BraceAssembly.new.show
       .rotate(x: 90)
       .mirror(x: 1)
       .translate(x: $phone_w + 5, y: 3, z: $phone_h/3.0)
