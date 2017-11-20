@@ -11,7 +11,7 @@ class VentMount < SolidRuby::Printed
       .translate(z: 50)
 
     # cut cylinder into one third
-    res -= triangle(a: $pin_d, alpha: 60, beta: 90)
+    res -= triangle(a: $pin_d, alpha: 60, beta: 85)
       .translate(x: -$pin_d)
       .linear_extrude(h: 50 + $pin_h*2.0 + 1)
       .translate(z: -0.5)
