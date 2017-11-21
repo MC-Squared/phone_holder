@@ -12,4 +12,7 @@ $vent_mount_d = 10
 $vent_mount_h = 35
 $vent_mount_pin_h = 5
 
+$key_w = 6
+$key_h = $key_w/2.0
+
 $thickness = 4

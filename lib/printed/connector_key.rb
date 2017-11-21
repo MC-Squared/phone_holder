@@ -7,20 +7,24 @@ class ConnectorKey < SolidRuby::Printed
   end
 
   def part(_show)
-    h = 2
+    h = $key_h
+
     h += $tolerance*0.5 unless @inner
-    res = cube(4, @length, h)
+    res = cube($key_w, @length, h)
       .center_xy
 
-    res -= cube(4, @length + 5, 4)
+    res -= cube($key_w, @length + 5, $key_w)
       .center_y
       .translate(x: 0.5)
       .rotate(y: 45)
 
-    res -= cube(4, @length + 5, 4)
+    res -= cube($key_w, @length + 5, $key_w)
       .center_y
       .translate(x: 0.5)
       .rotate(y: 45)
       .mirror(x: 1)
+
+    res.rotate(x: 180)
+      .translate(z: h)
   end
 end
