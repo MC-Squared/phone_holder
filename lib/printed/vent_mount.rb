@@ -38,6 +38,10 @@ class VentMount < SolidRuby::Printed
       .translate(x: 1.5, y: 0.45, z: -0.5)
       .rotate(z: 120)
 
-    res
+    if _show
+      res
+    else
+      res.rotate(x: 90)
+    end
   end
 end
