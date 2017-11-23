@@ -27,7 +27,7 @@ class BraceAssembly < SolidRuby::Assembly
       .center_x
       .translate(y: -$phone_h/10.0)
 
-    res += cube($phone_w/10.0, $phone_d*0.6, $thickness)
+    res += cube(5.5, $phone_d*0.6, $thickness)
       .center_y
       .translate(x: $phone_w/4.3, y: -$phone_h/3.0)
 
