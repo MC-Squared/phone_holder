@@ -8,9 +8,14 @@ class ConnectorKey < SolidRuby::Printed
 
   def part(_show)
     h = $key_h
+    w = $key_w
 
-    h += $tolerance*0.5 unless @inner
-    res = cube($key_w, @length, h)
+    unless @inner
+      h += $tolerance
+      w += $tolerance
+    end
+
+    res = cube(w, @length, h)
       .center_xy
 
     res -= cube($key_w, @length + 5, $key_w)
