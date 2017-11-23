@@ -24,15 +24,13 @@ class PhoneHolderAssembly < SolidRuby::Assembly
       .rotate(x: -90)
       .translate(x: $phone_w/2.0, y: 10, z: $phone_h/1.75)
 
-    v = VentMount.new.show
+    res += VentMount.new.show
+      .rotate(z: 180)
+      .translate(x: $phone_w/2.0, y: 0, z: $phone_h/1.75)
 
-    v += VentMount.new.show.rotate(z: 120)
+    res += VentMount.new.lock_tab
+      .rotate(x: 90, y: 90)
+      .translate(x: $phone_w/2.0, y: -$vent_mount_h + $pin_d, z: $phone_h/1.75 + $pin_d/2.0)
 
-    v += VentMount.new.show.rotate(z: -120)
-
-    v.rotate(x: -90)
-      .translate(x: $phone_w/2.0, y: -35, z: $phone_h/1.75)
-
-    res += v
   end
 end
