@@ -5,14 +5,13 @@ $phone_h = 158.5
 $phone_d = 10.5
 $tolerance = 0.5
 
-$pin_d = 5
-$pin_h = 5
+$thickness = 4
 
-$vent_mount_d = 10
-$vent_mount_h = 35
-$vent_mount_pin_h = 5
+$pin_d = 5
+$pin_h = $thickness + $tolerance
+
+$vent_mount_h = 50
+$vent_mount_plate_w = 30
 
 $key_w = 6
 $key_h = $key_w/2.0
-
-$thickness = 4
