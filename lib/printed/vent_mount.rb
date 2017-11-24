@@ -23,10 +23,12 @@ class VentMount < SolidRuby::Printed
       .center_x
       .translate(y: -$pin_h*1.5, z: -10)
 
-    res += cube($vent_mount_plate_w, $thickness, $pin_d)
+    res += cube($vent_mount_plate_w, $thickness, $thickness)
       .center_x
       .fillet(r: 2, edges: :vertical)
       .translate(y: $vent_mount_h - 0.1)
+
+
 
     # res += lock_tab
     #   .rotate(z: 90)
