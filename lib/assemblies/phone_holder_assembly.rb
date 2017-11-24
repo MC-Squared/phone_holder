@@ -9,16 +9,19 @@ class PhoneHolderAssembly < SolidRuby::Assembly
   def part(show)
     res = Phone.new
       .rotate(x: 90)
-      .translate(y: 32, z: 5)
+      .translate(y: 32, z: 5 + 10)
 
     res += BraceAssembly.new.show
+      .rotate(z: 20)
       .rotate(x: 90)
-      .translate(x: -5, y: 20, z: $phone_h/3.0)
+      .translate(x: $phone_w/2.0 + 5, y: 20, z: $phone_h/2.0 - 25)
 
     res += BraceAssembly.new.show
+      .rotate(z: 20)
       .rotate(x: 90)
       .mirror(x: 1)
-      .translate(x: $phone_w + 5, y: 20, z: $phone_h/3.0)
+      .translate(x: $phone_w/2.0 - 5, y: 20, z: $phone_h/2.0 - 25)
+
 
     res += Wishbone.new
       .rotate(x: -90)
