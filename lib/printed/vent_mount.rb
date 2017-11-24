@@ -15,6 +15,10 @@ class VentMount < SolidRuby::Printed
 
     res.translate(z: $pin_d/2.0 - 0.5)
 
+    res += PrintedThread.new(diameter: 6, length: $vent_mount_h - $pin_h).show
+      .rotate(x: 90)
+      .translate(y: $vent_mount_h, z: 2)
+
     res -= cube($pin_d, $vent_mount_h + $pin_h*2.0, 10)
       .center_x
       .translate(y: -$pin_h*1.5, z: -10)
@@ -43,7 +47,7 @@ class VentMount < SolidRuby::Printed
       .center_xy
       .translate(x: -$tolerance/2.0, z: ($pin_d + $thickness)/2.0 + 0.01)
 
-    res -= cylinder(d: $pin_d + $tolerance, h: $pin_d + $thickness + 1)
+    res -= cylinder(d: 6 + $tolerance, h: $pin_d + $thickness + 1)
       .translate(z: -0.1)
 
     res -= cube($pin_d + $thickness, $pin_d + $thickness + 1, ($pin_d + $thickness)/2.0)
