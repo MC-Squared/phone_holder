@@ -7,7 +7,7 @@ $tolerance = 0.5
 
 $thickness = 4
 
-$pin_d = 5
+$pin_d = 8
 $pin_h = $thickness + $tolerance
 $pin_gap = 1
 
