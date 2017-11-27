@@ -13,6 +13,7 @@ $pin_gap = 1
 
 $vent_mount_h = 50
 $vent_mount_plate_w = 30
+$vent_nut_d = $pin_d*3.0
 
 $key_w = 6
 $key_h = $key_w/2.0
