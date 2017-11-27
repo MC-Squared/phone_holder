@@ -9,28 +9,30 @@ class BraceAssembly < SolidRuby::Assembly
     pin_y = -$phone_h/6.0
     pin_x = ($phone_w)/2.0 - $pin_d*1.25
 
-    res = cylinder(d: $phone_w + $thickness*2.0 + 2, id: $phone_w - 1, h: $thickness)
+    res = cylinder(d: $phone_w + ($key_w*2.0), id: $phone_w, h: $thickness)
 
-    res -= cube(100, 100, 10)
-      .translate(x: -105, y: -50, z: -1)
+    res -= cube($phone_w, $phone_w*2.0, $thickness*2.0)
+      .translate(x: -$phone_w - 5, y: -$phone_w, z: -1)
 
-    res -= cube(100, 100, 10)
+    res -= cube($phone_w, $phone_w, $thickness*2.0)
       .translate(x: -10, y: 0, z: -1)
 
     res += ConnectorKey.new($phone_d, true)
-      .rotate(z: 80)
-      .translate(x: -$phone_d/2.0 - 4, y: -$phone_w/2.0 - $key_w/4.0 + 0.5)
+      .rotate(z: 90)
+      .translate(x: -$phone_d/2.0 - 5 - 0.1, y: -$phone_w/2.0 - $key_w/2.0)
 
     res += ConnectorKey.new($phone_d, true)
-      .translate(x: $phone_w/2.0 + $key_w/2.0,y: $phone_d/2.0)
+      .translate(x: $phone_w/2.0 + $key_w/2.0 - 0.1, y: $phone_d/2.0)
 
     # pin pad
     res += cylinder(d: $pin_d*2, h: $thickness)
-      .translate(x: pin_x, y: pin_y)
+      .translate(x: ($phone_w + $key_w)/2.0)
+      .rotate(z: -45)
 
     # pin hole
     res -= cylinder(d: $pin_d + $tolerance, h: $thickness + 1)
-      .translate(x: pin_x, y: pin_y, z: -0.5)
+    .translate(x: ($phone_w + $key_w)/2.0, z: -0.5)
+    .rotate(z: -45)
 
     if show
       res += EdgeCup.new.show
