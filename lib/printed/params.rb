@@ -9,6 +9,7 @@ $thickness = 4
 
 $pin_d = 5
 $pin_h = $thickness + $tolerance
+$pin_gap = 1
 
 $vent_mount_h = 50
 $vent_mount_plate_w = 30
