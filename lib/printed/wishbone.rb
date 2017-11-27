@@ -8,9 +8,18 @@ class Wishbone < SolidRuby::Printed
     t = triangle(beta: 90, alpha: 45, b: $phone_w + $phone_d)
       .rotate(z: 45)
 
-    # pads
+    res = cylinder(
+      d: $phone_w + $thickness*2.0 + $pin_d,
+      id: $phone_w,
+      h: $thickness)
+      .translate(y: $phone_w/2.0 + $thickness)
 
-    res = cylinder(d: $pin_d*2, h: $thickness)
+    res -= cube($phone_w*2, $phone_w, $thickness + 1)
+      .center_x
+      .translate(y: $phone_w/2.0, z: -0.5)
+
+    # pads
+    res += cylinder(d: $pin_d*2, h: $thickness)
 
     res += cylinder(d: $pin_d*2, h: $thickness)
       .translate(x: -t.a)
@@ -28,30 +37,6 @@ class Wishbone < SolidRuby::Printed
     res += Pin.new.show
       .translate(x: t.c, z: $thickness - 0.01)
       .rotate(z: 45)
-
-    # anti-rotation pins
-    res += cylinder(d: $pin_d, h: $thickness*0.75)
-      .translate(x: t.c/1.5, z: $thickness - 0.01)
-      .rotate(z: 45)
-
-    res += cylinder(d: $pin_d, h: $thickness*0.75)
-      .translate(x: -t.a/1.5, z: $thickness - 0.01)
-      .rotate(z: -45)
-
-    # sides
-    res += cube(x: t.a, y: $pin_d*1.0, z: $thickness)
-      .center_y
-      .rotate(z: -t.gamma + 180)
-
-    res += cube(x: t.c, y: $pin_d*1.0, z: $thickness)
-      .center_y
-      .rotate(z: t.alpha)
-
-    th = triangle(beta: 90, a: t.a, c: t.b/2.0)
-
-    res += cube(x: t.b, y: $pin_d*1.0, z: $thickness)
-      .center_xy
-      .translate(y: th.c)
 
     # main pivot
     res -= cylinder(d: $pin_d + $tolerance, h: $thickness+2)
